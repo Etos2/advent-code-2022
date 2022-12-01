@@ -5,12 +5,15 @@ pub fn challenge_a(input: &str) -> Result<()> {
         .split("\n\n")
         .map(|g| {
             g.lines()
-                .map(|l| l.parse::<i32>().context(format!("unable to parse \"{l}\"")))
+                .map(|l| {
+                    l.parse::<i32>()
+                        .with_context(|| format!("unable to parse \"{l}\""))
+                })
                 .sum::<Result<i32>>()
         })
         .collect::<Result<Vec<_>>>()?;
 
-    let max = sums.iter().max().context("file is empty")?;
+    let max = sums.iter().max().with_context(|| "file is empty")?;
 
     println!("{}", max);
     Ok(())
@@ -21,7 +24,10 @@ pub fn challenge_b(input: &str) -> Result<()> {
         .split("\n\n")
         .map(|g| {
             g.lines()
-                .map(|l| l.parse::<i32>().context(format!("unable to parse \"{l}\"")))
+                .map(|l| {
+                    l.parse::<i32>()
+                        .with_context(|| format!("unable to parse \"{l}\""))
+                })
                 .sum::<Result<i32>>()
         })
         .collect::<Result<Vec<_>>>()?;
