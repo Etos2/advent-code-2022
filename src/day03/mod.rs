@@ -9,7 +9,7 @@ pub fn part_a(input: &str) -> String {
     let mut matches = Vec::new();
     for (a, b) in compartments {
         for char in a.chars() {
-            if let Some(_) = b.find(char) {
+            if b.contains(char) {
                 matches.push(char);
                 break;
             }
@@ -30,11 +30,9 @@ pub fn part_b(input: &str) -> String {
     let mut matches = Vec::new();
     for (a, b, c) in groups {
         for char in a.chars() {
-            if let Some(_) = b.find(char) {
-                if let Some(_) = c.find(char) {
-                    matches.push(char);
-                    break;
-                }
+            if b.contains(char) && c.contains(char) {
+                matches.push(char);
+                break;
             }
         }
     }
