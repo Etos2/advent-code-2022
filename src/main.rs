@@ -2,6 +2,7 @@ mod day01;
 mod day02;
 mod day03;
 mod day04;
+mod day05;
 
 use anyhow::{bail, ensure, Result};
 use itertools::Itertools;
@@ -27,6 +28,8 @@ fn main() -> Result<()> {
             "day03b" => day03::part_b(&data),
             "day04a" => day04::part_a(&data),
             "day04b" => day04::part_b(&data),
+            "day05a" => day05::part_a(&data),
+            "day05b" => day05::part_b(&data),
             _ => bail!("challenge not complete yet!"),
         };
         println!("{result}");
