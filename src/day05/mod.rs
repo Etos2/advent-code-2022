@@ -3,7 +3,7 @@ use nom::bytes::complete::tag;
 use nom::character::complete::{self, alpha1, digit1, multispace1, newline, space1};
 use nom::multi::{many1, separated_list1};
 use nom::sequence::{delimited, preceded};
-use nom::{IResult, InputIter};
+use nom::IResult;
 
 #[derive(Debug)]
 struct Move {
@@ -11,9 +11,6 @@ struct Move {
     from: usize,
     to: usize,
 }
-
-#[derive(Debug)]
-struct Crate(char);
 
 pub fn part_a(input: &str) -> String {
     let (_, (mut crates, moves)) = parse_all(input).unwrap();
